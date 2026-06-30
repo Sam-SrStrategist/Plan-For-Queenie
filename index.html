@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dominion by Design — Platform Proposal | Kinetic Digital Publishers</title>
+<link rel="icon" type="image/jpeg" href="sam.jpg">
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","xeylbz7tau");</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#E0B93B;--gold-light:#F7DE8B;--gold-deep:#C49A22;
+  --grad:linear-gradient(135deg,#F7DE8B 0%,#E0B93B 50%,#C49A22 100%);
+  --bg:#0C0C0E;--bg-card:#16161A;--bg-deep:#101013;--bg-soft:#1E1E24;
+  --text:#F4F1E8;--text-dim:#BCB7A8;--text-muted:#8C887C;--text-faint:#5E5B52;
+  --border:rgba(224,185,59,0.16);--border-soft:rgba(224,185,59,0.08);
+  --green:#7FD9A3;--panel:312px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:18px;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-left:var(--panel)}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(224,185,59,0.3);color:#fff}
+h1,h2,h3,h4{font-family:'DM Serif Display',serif;font-weight:400;line-height:1.16}
+em{font-style:italic;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gold{color:var(--gold-light)}
+.wrap{max-width:880px;margin:0 auto;padding:0 40px;width:100%}
+section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:84px 0;scroll-snap-align:start;border-bottom:1px solid var(--border-soft);position:relative}
+.section-label{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:16px}
+.section-title{font-size:42px;margin-bottom:20px}
+@media(max-width:600px){.section-title{font-size:32px}}
+p.lead{font-size:21px;color:var(--text-dim);margin-bottom:16px}
+p{margin-bottom:14px;color:var(--text-dim)}
+.rule{width:60px;height:2px;background:var(--grad);margin:22px 0;border-radius:2px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.hero{text-align:center;align-items:center;background:radial-gradient(ellipse at 50% 30%,rgba(224,185,59,0.10),transparent 60%)}
+.hero .eyebrow{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:24px}
+.hero h1{font-size:60px;margin-bottom:22px}
+@media(max-width:600px){.hero h1{font-size:40px}}
+.hero .sub{font-size:22px;color:var(--text-dim);max-width:600px;margin:0 auto 30px}
+.hero .prepared{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted)}
+.hero .prepared strong{color:var(--gold-light)}
+.grid{display:grid;gap:16px;margin-top:24px}
+.grid.two{grid-template-columns:1fr 1fr}
+.grid.three{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:760px){.grid.two,.grid.three{grid-template-columns:1fr}}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:15px;padding:22px}
+.card h4{font-size:19px;margin-bottom:8px;color:var(--text)}
+.card p{font-size:15px;margin-bottom:0}
+.card .ico{width:40px;height:40px;border-radius:10px;background:rgba(224,185,59,0.12);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px}
+.inc-list{list-style:none;margin-top:6px}
+.inc-list li{padding:7px 0 7px 26px;position:relative;color:var(--text-dim);font-size:14px;border-bottom:1px solid var(--border-soft)}
+.inc-list li:last-child{border-bottom:none}
+.inc-list li:before{content:"\25C6";position:absolute;left:0;color:var(--gold);font-size:11px;top:11px}
+.inc-list li strong{color:var(--text)}
+.module{display:flex;gap:16px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--border-soft)}
+.module .num{font-family:'DM Serif Display',serif;font-size:26px;color:var(--gold);min-width:44px}
+.module h4{font-size:17px;margin-bottom:2px}
+.module p{font-size:14px;margin:0}
+.module .vt{color:var(--text-muted);font-size:12px}
+.compare{width:100%;border-collapse:collapse;margin-top:20px;font-size:15px}
+.compare th,.compare td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border-soft)}
+.compare th{color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase}
+.compare td:first-child{color:var(--text);font-weight:600}
+.tl{position:relative;margin-top:20px;padding-left:28px}
+.tl:before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--border)}
+.tl-item{position:relative;padding:0 0 22px 20px}
+.tl-item:before{content:"";position:absolute;left:-28px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--gold)}
+.tl-item h4{font-size:17px;margin-bottom:3px}
+.tl-item p{font-size:14px;margin:0}
+.demo-wrap{display:flex;gap:38px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:24px}
+.phone{width:280px;height:570px;background:#000;border-radius:40px;padding:11px;box-shadow:0 30px 70px rgba(0,0,0,0.6),0 0 0 1px var(--border);flex-shrink:0}
+.phone-screen{width:100%;height:100%;background:var(--bg-deep);border-radius:30px;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.ph-top{padding:16px 18px 10px;text-align:center}
+.ph-top .greet{font-size:11px;color:var(--text-muted);letter-spacing:1px}
+.ph-top .ttl{font-family:'DM Serif Display',serif;font-size:20px;color:var(--gold-light);margin-top:2px}
+.ph-body{flex:1;overflow:hidden;padding:4px 16px}
+.ph-card{background:var(--bg-card);border:1px solid var(--border-soft);border-radius:13px;padding:12px;margin-bottom:10px}
+.ph-card .lbl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.ph-card .txt{font-size:12px;color:var(--text-dim);line-height:1.45}
+.ph-input{font-size:12px;color:var(--text-faint);font-style:italic}
+.ph-screen{display:none}.ph-screen.on{display:block;animation:fade .4s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.bar-row{display:flex;align-items:flex-end;gap:7px;height:70px;margin-top:6px}
+.bar{flex:1;background:var(--grad);border-radius:4px 4px 0 0;opacity:.9}
+.streak{font-family:'DM Serif Display',serif;font-size:36px;color:var(--gold-light)}
+.ph-tabs{display:flex;border-top:1px solid var(--border);background:var(--bg-card)}
+.ph-tab{flex:1;text-align:center;padding:11px 4px;font-size:9px;letter-spacing:.5px;color:var(--text-muted);cursor:pointer;transition:color .2s}
+.ph-tab.on{color:var(--gold-light)}
+.ph-tab .ti{font-size:15px;display:block;margin-bottom:2px}
+.demo-note{max-width:300px}
+.demo-note h3{font-size:25px;margin-bottom:12px}
+.demo-note p{font-size:15px}
+.tag{display:inline-block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);border-radius:30px;padding:5px 13px;margin-bottom:14px}
+.tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:26px}
+@media(max-width:820px){.tiers{grid-template-columns:1fr}}
+.tier{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:26px 22px;position:relative;display:flex;flex-direction:column}
+.tier.best{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 18px 44px rgba(224,185,59,0.13)}
+.tier .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--grad);color:#1a1407;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:30px}
+.tier .plan{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:5px}
+.tier .name{font-family:'DM Serif Display',serif;font-size:22px;margin-bottom:12px}
+.tier .amt{font-family:'DM Serif Display',serif;font-size:42px;color:var(--text)}
+.tier .save{font-size:13px;color:var(--green);font-weight:700;margin:6px 0 12px}
+.tier .terms{font-size:12px;color:var(--text-muted);margin-bottom:14px}
+.tier ul{list-style:none;font-size:13px}
+.tier li{padding:6px 0 6px 22px;position:relative;color:var(--text-dim);border-bottom:1px solid var(--border-soft)}
+.tier li:before{content:"\2713";position:absolute;left:0;color:var(--gold)}
+.cta-btn{display:inline-block;background:var(--grad);color:#1a1407;font-weight:800;font-size:15px;letter-spacing:.3px;padding:15px 30px;border-radius:30px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(224,185,59,0.3)}
+.fld{margin-bottom:13px;text-align:left}
+.fld label{display:block;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.fld input,.fld textarea,.fld select{width:100%;background:var(--bg-deep);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-family:'DM Sans';font-size:15px}
+.fld textarea{min-height:68px;resize:vertical}
+.form-msg{font-size:13px;margin-top:12px;color:var(--gold-light);min-height:18px}
+.cta-form{max-width:540px;margin:24px auto 0;text-align:left}
+.cta-form .fld input,.cta-form .fld textarea,.cta-form .fld select{background:var(--bg-card)}
+#panel{position:fixed;top:0;left:0;width:var(--panel);height:100vh;z-index:9000;background:rgba(16,16,19,0.97);backdrop-filter:blur(18px);border-right:1px solid var(--border);display:flex;flex-direction:column;transition:transform .35s ease}
+.pnl-head{padding:22px 22px 16px;border-bottom:1px solid var(--border-soft);display:flex;gap:12px;align-items:center}
+.pnl-avatar{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);flex-shrink:0;background:var(--bg-soft)}
+.pnl-head .brand{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted)}
+.pnl-head h4{font-size:16px;line-height:1.2;color:var(--gold-light)}
+.pnl-nav{flex:1;overflow-y:auto;padding:14px 14px 8px}
+.pnl-navlabel{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-faint);padding:4px 10px 10px}
+.pnl-ch{display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;cursor:pointer;transition:background .2s;border:1px solid transparent}
+.pnl-ch:hover{background:var(--bg-soft)}
+.pnl-ch.active{background:rgba(224,185,59,0.12);border-color:var(--border)}
+.pnl-ch .pnl-num{font-size:11px;color:var(--gold);font-weight:700;min-width:20px}
+.pnl-ch .pnl-t{font-size:14px;color:var(--text-dim);flex:1}
+.pnl-ch.active .pnl-t{color:var(--gold-light)}
+.pnl-ch .pnl-ts{font-size:11px;color:var(--text-faint)}
+.pnl-audio{border-top:1px solid var(--border);padding:14px 18px;background:var(--bg-deep)}
+.pa-row{display:flex;align-items:center;gap:12px}
+.pa-play{width:38px;height:38px;border-radius:50%;background:var(--grad);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pa-play svg{width:16px;height:16px;fill:#1a1407}
+.pa-prog{flex:1}
+.pa-bar{height:5px;background:var(--bg-soft);border-radius:3px;cursor:pointer;overflow:hidden}
+.pa-fill{height:100%;width:0;background:var(--grad)}
+.pa-time{display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);margin-top:5px}
+.pa-cap{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text-faint);margin-bottom:8px;text-align:center}
+.panel-toggle{display:none}
+@media(max-width:980px){
+  body{padding-left:0}
+  #panel{transform:translateX(-100%);width:84vw}
+  #panel.open{transform:translateX(0)}
+  .panel-toggle{display:flex;position:fixed;top:16px;left:16px;z-index:9001;width:46px;height:46px;border-radius:12px;background:var(--grad);color:#1a1407;border:none;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
+}
+.overlay{position:fixed;inset:0;z-index:9999;background:rgba(8,8,10,0.97);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;transition:opacity .6s ease;padding:20px}
+.overlay.hide{opacity:0;pointer-events:none}
+.ov-card{max-width:470px;text-align:center;padding:36px 28px;width:100%}
+.ov-card .eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.ov-card h2{font-size:36px;margin-bottom:14px}
+.ov-card p{font-size:16px;margin-bottom:24px}
+.ov-avatar{width:68px;height:68px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);margin:0 auto 16px;display:block;background:var(--bg-soft)}
+.ov-note{font-size:11px;color:var(--text-faint);line-height:1.6;margin-top:14px}
+.foot{padding:40px 0;color:var(--text-faint);font-size:13px;text-align:center;border-top:1px solid var(--border-soft)}
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlay">
+  <div class="ov-card">
+    <img src="sam.jpg" class="ov-avatar" alt="Sam">
+    <div class="eyebrow">Dominion by Design&trade;</div>
+    <h2>Welcome, <em>Queenie</em></h2>
+    <p>This is your platform proposal. Add your details below and it will open. Listen to the narrated walkthrough on the left, or scroll at your own pace.</p>
+    <form id="gate-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="return submitGate(event)">
+      <input type="hidden" name="access_key" value="7f73abca-b11e-46e5-a1b6-7c341bc21e81">
+      <input type="hidden" name="subject" value="Queenie Davis-Sutton opened the Platform Proposal">
+      <input type="hidden" name="from_name" value="Dominion by Design Proposal Gate">
+      <input type="hidden" name="proposal" value="Dominion by Design — Platform Proposal">
+      <input type="hidden" name="intended_recipient" value="teamkineticemail@gmail.com">
+      <div class="fld"><label>Your Name</label><input type="text" name="name" required placeholder="Queenie Davis-Sutton"></div>
+      <div class="fld"><label>Email</label><input type="email" name="email" required placeholder="your@email.com"></div>
+      <div class="fld"><label>Anything on your mind? (optional)</label><textarea name="message" placeholder="A question or note for the team..."></textarea></div>
+      <button type="submit" class="cta-btn" id="gateBtn" style="width:100%">Open the Proposal</button>
+      <div class="form-msg" id="gateMsg"></div>
+      <p class="ov-note">Prepared exclusively for Queenie Davis-Sutton and confidential to Kinetic Digital Publishers.</p>
+    </form>
+  </div>
+</div>
+
+<button class="panel-toggle" onclick="togglePanel()">&#9776;</button>
+<aside id="panel">
+  <div class="pnl-head">
+    <img src="sam.jpg" class="pnl-avatar" alt="Sam">
+    <div><div class="brand">Kinetic Digital Publishers</div><h4>Proposal Walkthrough</h4></div>
+  </div>
+  <nav class="pnl-nav">
+    <div class="pnl-navlabel">Sections</div>
+    <div id="chList"></div>
+  </nav>
+  <div class="pnl-audio">
+    <div class="pa-cap">Narrated by Sam</div>
+    <div class="pa-row">
+      <button class="pa-play" onclick="togglePlay()"><svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg id="pauseIcon" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
+      <div class="pa-prog">
+        <div class="pa-bar" id="apBar" onclick="seekAudio(event)"><div class="pa-fill" id="apFill"></div></div>
+        <div class="pa-time"><span id="apCur">0:00</span><span id="apDur">0:00</span></div>
+      </div>
+    </div>
+  </div>
+</aside>
+<audio id="narrationAudio" preload="auto"><source src="walkthrough.mp3" type="audio/mpeg"></audio>
+
+<section class="hero" id="hero">
+  <div class="wrap">
+    <div class="eyebrow">Platform Proposal &middot; Prepared for Queenie Davis-Sutton</div>
+    <h1>From Books to a <em>Living Platform</em></h1>
+    <p class="sub">Turning the Dominion by Design message into a place people can live inside, every day.</p>
+    <div class="rule" style="margin:22px auto"></div>
+    <div class="prepared">Presented by <strong>Sam</strong> &middot; Kinetic Digital Publishers</div>
+  </div>
+</section>
+
+<section id="vision">
+  <div class="wrap reveal">
+    <div class="section-label">01 &middot; The Vision</div>
+    <h2 class="section-title">Your books are the <em>front door</em></h2>
+    <p class="lead">You said it best: the books are not the end of the work. They are how people walk in. The deeper work is transformation.</p>
+    <p>You take a person who feels stuck, small, and disconnected from who they really are, and you walk them home. You help them identify the inner voice, rewrite the words and patterns running their lives, recover their identity, and begin living from authority and design. That is not something people want to read once. It is something they want to <span class="gold">practice daily.</span></p>
+    <p>This proposal turns that into a platform, where your readers become members, your method becomes a guided experience, and one-time book sales grow into a community, all under the Dominion by Design brand.</p>
+  </div>
+</section>
+
+<section id="bigidea">
+  <div class="wrap reveal">
+    <div class="section-label">02 &middot; The Big Idea</div>
+    <h2 class="section-title">One journey, <em>three steps</em>, one home</h2>
+    <p>Your three books already form one connected path. The platform gives that path a home people can step into and keep returning to.</p>
+    <div class="grid three">
+      <div class="card"><div class="ico">&#9733;</div><h4>Reclaim</h4><p><em>Bad to the Bone</em> &mdash; come back to who you really are.</p></div>
+      <div class="card"><div class="ico">&#9998;</div><h4>Rewrite</h4><p><em>When You Think It, You Ink It!</em> &mdash; the INK System for thoughts and words.</p></div>
+      <div class="card"><div class="ico">&#9819;</div><h4>Recover Dominion</h4><p><em>Dominion by Design</em> &mdash; live aligned and lead.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="plana">
+  <div class="wrap reveal">
+    <div class="section-label">03 &middot; Plan A</div>
+    <h2 class="section-title">The <em>Platform Foundation</em></h2>
+    <p class="lead">A strong, practical starting point that begins serving people and earning revenue, without overbuilding before the model is proven.</p>
+    <h3 style="font-size:22px;margin:18px 0 4px" class="gold">The Signature Course &middot; 30 videos</h3>
+    <p style="font-size:15px">Built with you, in your voice. We handle structure and production; you stay at the center. 30 short lessons (5&ndash;10 min each) with prompts and worksheets.</p>
+    <div class="module"><div class="num">0</div><div><h4>Your Framework <span class="vt">&middot; 3 videos</span></h4><p>We capture your method as a clear, teachable system. Everything is built on this.</p></div></div>
+    <div class="module"><div class="num">1</div><div><h4>Reclaim Your Identity <span class="vt">&middot; 8 videos</span></h4><p>The Bad to the Bone work: who you were before the damage.</p></div></div>
+    <div class="module"><div class="num">2</div><div><h4>The INK System <span class="vt">&middot; 9 videos</span></h4><p>Catch and rewrite the thoughts, words, and beliefs running your life.</p></div></div>
+    <div class="module"><div class="num">3</div><div><h4>Living in Dominion <span class="vt">&middot; 10 videos</span></h4><p>Boundaries, alignment, and leading your whole life on purpose.</p></div></div>
+    <div class="grid two" style="margin-top:18px">
+      <div class="card"><div class="ico">&#127908;</div><h4>How the videos get made (your choice)</h4><ul class="inc-list"><li><strong>You record:</strong> we send scripts, a shot list, and lighting and audio guidance; we edit.</li><li><strong>Or we produce them:</strong> with your consent, an AI voice clone of you over branded visuals, so you record almost nothing.</li><li>Either way, <strong>you work less</strong>, and it still sounds like you.</li></ul></div>
+      <div class="card"><div class="ico">&#129309;</div><h4>Two 1:1 sessions with you</h4><ul class="inc-list"><li>A <strong>kickoff session</strong> to welcome members.</li><li>A <strong>completion session</strong> to celebrate and point them forward.</li><li>Keeps your presence in the journey, with little time commitment.</li></ul></div>
+      <div class="card"><div class="ico">&#128214;</div><h4>The Practice Workbook</h4><ul class="inc-list"><li>The INK exercises in a do-it-daily format</li><li>Reflection prompts per module</li><li>About 40 to 60 pages, digital and print-ready</li></ul></div>
+      <div class="card"><div class="ico">&#128172;</div><h4>The Community Setup</h4><ul class="inc-list"><li>A private, members-only space, branded to you</li><li>Structured topics and onboarding flow</li><li>A 30-day prompt calendar to keep it alive</li></ul></div>
+      <div class="card"><div class="ico">&#127894;</div><h4>The Membership (what members get)</h4><ul class="inc-list"><li>Full course and workbook access</li><li>The private community</li><li>One live webinar per month (~60 min) with you</li><li>The option to book 1:1 time with you</li></ul></div>
+      <div class="card"><div class="ico">&#127760;</div><h4>Website Integration</h4><ul class="inc-list"><li>Built into the Dominion by Design site we are creating</li><li>A clean join page, payments, and member sign-in</li><li>Clear pathways from reader to member</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap reveal">
+    <div class="section-label">04 &middot; The Demo</div>
+    <h2 class="section-title">See the app <em>before it exists</em></h2>
+    <div class="demo-wrap">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="ph-top"><div class="greet">Good morning, Queenie&rsquo;s reader</div><div class="ttl" id="phTitle">Today</div></div>
+          <div class="ph-body">
+            <div class="ph-screen on" data-s="today">
+              <div class="ph-card"><div class="lbl">Today&rsquo;s INK Practice</div><div class="txt">What sentence have you been repeating about yourself?</div></div>
+              <div class="ph-card"><div class="lbl">Write it down</div><div class="ph-input">&ldquo;I always mess this up&hellip;&rdquo;</div></div>
+              <div class="ph-card"><div class="lbl">Now rewrite it</div><div class="txt gold">&ldquo;I am learning, and I have done hard things before.&rdquo;</div></div>
+            </div>
+            <div class="ph-screen" data-s="progress">
+              <div class="ph-card" style="text-align:center"><div class="lbl">Current Streak</div><div class="streak">14</div><div class="txt">days of practice</div></div>
+              <div class="ph-card"><div class="lbl">Alignment This Week</div><div class="bar-row"><div class="bar" style="height:40%"></div><div class="bar" style="height:60%"></div><div class="bar" style="height:50%"></div><div class="bar" style="height:75%"></div><div class="bar" style="height:85%"></div><div class="bar" style="height:70%"></div><div class="bar" style="height:95%"></div></div></div>
+            </div>
+            <div class="ph-screen" data-s="community">
+              <div class="ph-card"><div class="lbl">Maria &middot; 2h ago</div><div class="txt">Day 14. I caught the old sentence today and rewrote it before it ran the whole afternoon.</div></div>
+              <div class="ph-card"><div class="lbl">From Queenie</div><div class="txt gold">That is dominion. You are governing your inner life on purpose. Proud of you.</div></div>
+            </div>
+            <div class="ph-screen" data-s="learn">
+              <div class="ph-card"><div class="lbl">Module 2 &middot; The INK System</div><div class="txt">Lesson 3 of 9 &middot; 68% complete</div></div>
+              <div class="ph-card"><div class="lbl">Up Next</div><div class="txt">The Beliefs You Inherited Are Not the Beliefs You Must Keep</div></div>
+            </div>
+          </div>
+          <div class="ph-tabs">
+            <div class="ph-tab on" data-t="today" onclick="phSwitch('today','Today')"><span class="ti">&#9998;</span>Today</div>
+            <div class="ph-tab" data-t="progress" onclick="phSwitch('progress','Progress')"><span class="ti">&#9650;</span>Progress</div>
+            <div class="ph-tab" data-t="community" onclick="phSwitch('community','Community')"><span class="ti">&#9733;</span>Circle</div>
+            <div class="ph-tab" data-t="learn" onclick="phSwitch('learn','Learn')"><span class="ti">&#9658;</span>Learn</div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-note">
+        <span class="tag">Live preview &middot; auto-playing</span>
+        <h3>A daily companion, not just a book.</h3>
+        <p>This is the feel of the app in Plan B: a daily INK practice, a streak that rewards consistency, an alignment tracker that shows real progress, your community, and your teaching, all in one place. The screens cycle on their own, and you can still tap any tab to explore.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="planb">
+  <div class="wrap reveal">
+    <div class="section-label">05 &middot; Plan B</div>
+    <h2 class="section-title">The <em>App-Led Platform</em></h2>
+    <p class="lead">Everything in Plan A, delivered through your own branded app, the version that turns one-time sales into a daily relationship.</p>
+    <p style="font-size:14px;color:var(--text-muted)"><strong class="gold">Scope:</strong> a branded iOS and Android app, about 6 core screens, the full 30-video library, daily practice with reminders and streaks, in-app community, 1:1 booking, and live sessions.</p>
+    <div class="grid three" style="margin-top:8px">
+      <div class="card"><div class="ico">&#9998;</div><h4>Daily INK Practice</h4><p>The signature exercise, guided every day, with reminders and streaks.</p></div>
+      <div class="card"><div class="ico">&#9650;</div><h4>Progress &amp; Scoring</h4><p>Streaks and alignment scores so members feel themselves changing.</p></div>
+      <div class="card"><div class="ico">&#9658;</div><h4>Video Library</h4><p>All 30 lessons and your teaching, on the go.</p></div>
+      <div class="card"><div class="ico">&#9733;</div><h4>Community In-App</h4><p>The circle moves with them, with reminders that keep the habit alive.</p></div>
+      <div class="card"><div class="ico">&#128100;</div><h4>Coaching &amp; Live</h4><p>Book 1:1 time and join live webinars without leaving the app.</p></div>
+      <div class="card"><div class="ico">&#128241;</div><h4>iOS &amp; Android</h4><p>A polished, branded experience on both, built lean on a proven platform.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap reveal">
+    <div class="section-label">06 &middot; Why a Platform</div>
+    <h2 class="section-title">A book is read once. A platform is <em>lived in</em>.</h2>
+    <table class="compare">
+      <tr><th>&nbsp;</th><th>Books Only</th><th>Platform (A)</th><th>App-Led (A + B)</th></tr>
+      <tr><td>Relationship</td><td>One-time read</td><td>Members return weekly</td><td>Daily companion</td></tr>
+      <tr><td>The method</td><td>Described once</td><td>Practiced together</td><td>Practiced every day</td></tr>
+      <tr><td>Revenue</td><td>Per book sold</td><td>Memberships</td><td>Memberships at scale</td></tr>
+      <tr><td>Community</td><td>None</td><td>Private circle</td><td>Circle in their pocket</td></tr>
+      <tr><td>Your reach</td><td>Readers</td><td>Members</td><td>A movement</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap reveal">
+    <div class="section-label">07 &middot; Timeline</div>
+    <h2 class="section-title">An estimated path to <em>launch</em></h2>
+    <p>Two clear timelines. <strong class="gold">Plan A delivers in about 3 months.</strong> <strong class="gold">Plan A + B together, about 6 months.</strong> It all runs alongside your book launch, so that audience flows straight in.</p>
+    <div class="tl">
+      <div class="tl-item"><h4>Month 1 &middot; Foundation</h4><p>Document your framework, finalize the plan, and script the course.</p></div>
+      <div class="tl-item"><h4>Month 2 &middot; Build</h4><p>Produce the 30 course videos and the workbook; set up the community.</p></div>
+      <div class="tl-item"><h4>Month 3 &middot; Launch (Plan A complete)</h4><p>Website integration, payments, and a soft launch. Plan A is live and earning.</p></div>
+      <div class="tl-item"><h4>Months 4&ndash;6 &middot; The App (Plan B)</h4><p>The branded app is built on the proven foundation and launched on iOS and Android.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="investment">
+  <div class="wrap reveal">
+    <div class="section-label">08 &middot; Investment</div>
+    <h2 class="section-title">Clear options, <em>your call</em></h2>
+    <p>Every option is a one-time investment. No recurring fees.</p>
+    <div class="tiers">
+      <div class="tier">
+        <div class="plan">Plan A</div><div class="name">Platform Foundation</div>
+        <div class="amt">$12,000</div><div class="terms">One-time &middot; no recurring fees</div>
+        <ul><li>Framework, documented</li><li>30-video signature course</li><li>Practice workbook</li><li>Community setup</li><li>Membership, webinars, 1:1</li><li>Website integration</li></ul>
+      </div>
+      <div class="tier best">
+        <div class="badge">Best Value</div>
+        <div class="plan">Plan A + B</div><div class="name">The Complete Platform</div>
+        <div class="amt">$25,000</div><div class="save">Save $5,000</div><div class="terms">One-time &middot; no recurring fees</div>
+        <ul><li>Everything in Plan A</li><li>Everything in Plan B</li><li>Built as one connected system</li><li>The full vision, start to finish</li></ul>
+      </div>
+      <div class="tier">
+        <div class="plan">Plan B</div><div class="name">The App-Led Platform</div>
+        <div class="amt">$18,000</div><div class="terms">One-time &middot; no recurring fees</div>
+        <ul><li>Branded app, iOS &amp; Android</li><li>Daily INK practice</li><li>Progress &amp; scoring</li><li>Video library &amp; community</li><li>Coaching &amp; live sessions</li><li>Best built on the foundation</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nextsteps">
+  <div class="wrap reveal">
+    <div class="section-label">09 &middot; Next Steps</div>
+    <h2 class="section-title">How we <em>begin</em></h2>
+    <form class="cta-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="return submitCta(event)">
+      <input type="hidden" name="access_key" value="7f73abca-b11e-46e5-a1b6-7c341bc21e81">
+      <input type="hidden" name="subject" value="Queenie Davis-Sutton — READY TO START (Platform Proposal)">
+      <input type="hidden" name="from_name" value="Dominion by Design Proposal — Commitment">
+      <input type="hidden" name="proposal" value="Dominion by Design — Platform Proposal">
+      <input type="hidden" name="intended_recipient" value="teamkineticemail@gmail.com">
+      <h3 style="font-size:23px;margin-bottom:6px" class="gold">Ready to begin?</h3>
+      <p style="font-size:15px;margin-bottom:16px">Tell us which path feels right, or ask anything, and we will be in touch right away.</p>
+      <div class="fld"><label>Your Name</label><input type="text" name="name" required placeholder="Queenie Davis-Sutton"></div>
+      <div class="fld"><label>Email</label><input type="email" name="email" required placeholder="your@email.com"></div>
+      <div class="fld"><label>Which path interests you?</label><select name="path"><option value="">Choose one...</option><option>Plan A — Platform Foundation ($12,000)</option><option>Plan A + B — Complete Platform ($25,000)</option><option>Plan B — The App ($18,000)</option><option>Not sure yet, let us talk</option></select></div>
+      <div class="fld"><label>Anything else?</label><textarea name="message" placeholder="Questions, thoughts, or anything you'd like addressed before we begin..."></textarea></div>
+      <button type="submit" class="cta-btn" id="ctaBtn" style="width:100%">Let&rsquo;s Build the Platform</button>
+      <div class="form-msg" id="ctaMsg"></div>
+      <p style="font-size:13px;color:var(--text-muted);margin-top:12px;text-align:center">Strong, sustainable, and aligned with the bigger Dominion by Design vision.</p>
+    </form>
+  </div>
+</section>
+
+<div class="foot">Kinetic Digital Publishers &middot; Prepared for Queenie Davis-Sutton &middot; Dominion by Design&trade;</div>
+
+<script>
+function revealProposal(){document.getElementById('overlay').classList.add('hide');}
+async function submitWeb3(form){const fd=new FormData(form);const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});let d={};try{d=await r.json();}catch(e){d={success:false};}if(!r.ok||d.success===false)throw new Error(d.message||'Submission failed.');return d;}
+async function submitGate(e){e.preventDefault();const f=document.getElementById('gate-form'),b=document.getElementById('gateBtn'),m=document.getElementById('gateMsg');if(!f.checkValidity()){f.reportValidity();return false;}b.disabled=true;b.textContent='Opening...';m.textContent='One moment...';try{await submitWeb3(f);}catch(err){}m.textContent='';revealProposal();return false;}
+async function submitCta(e){e.preventDefault();const f=e.target,b=document.getElementById('ctaBtn'),m=document.getElementById('ctaMsg');if(!f.checkValidity()){f.reportValidity();return false;}b.disabled=true;b.textContent='Sending...';m.textContent='Sending...';try{await submitWeb3(f);m.textContent='Thank you, Queenie. We have it, and we will be in touch right away.';b.textContent='Sent';}catch(err){m.textContent='Something went wrong. Please email teamkineticemail@gmail.com and we will jump on it.';b.disabled=false;b.textContent='Let\u2019s Build the Platform';}return false;}
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+function phSwitch(sName,title){document.querySelectorAll('.ph-screen').forEach(x=>x.classList.toggle('on',x.dataset.s===sName));document.querySelectorAll('.ph-tab').forEach(x=>x.classList.toggle('on',x.dataset.t===sName));document.getElementById('phTitle').textContent=title;}
+(function(){const order=[['today','Today'],['progress','Progress'],['community','Circle'],['learn','Learn']];let i=0,paused=false,started=false;document.querySelectorAll('.ph-tab').forEach(t=>t.addEventListener('click',()=>{paused=true;}));function step(){if(paused)return;i=(i+1)%order.length;phSwitch(order[i][0],order[i][1]);}const d=document.getElementById('demo');if(d){new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting&&!started){started=true;setInterval(step,2600);}});},{threshold:0.3}).observe(d);}})();
+const chapters=[
+ {t:0,  n:"00", l:"Intro / Welcome",   id:"hero"},
+ {t:14, n:"01", l:"The Vision",         id:"vision"},
+ {t:47, n:"02", l:"The Big Idea",       id:"bigidea"},
+ {t:75, n:"03", l:"Plan A: Foundation", id:"plana"},
+ {t:168,n:"04", l:"The App Demo",       id:"demo"},
+ {t:204,n:"05", l:"Plan B: The App",    id:"planb"},
+ {t:224,n:"06", l:"Why a Platform",     id:"why"},
+ {t:255,n:"07", l:"Timeline",           id:"timeline"},
+ {t:272,n:"08", l:"Investment",         id:"investment"},
+ {t:293,n:"09", l:"Next Steps",         id:"nextsteps"}
+];
+const audio=document.getElementById('narrationAudio');
+const fill=document.getElementById('apFill'),cur=document.getElementById('apCur'),dur=document.getElementById('apDur');
+const playI=document.getElementById('playIcon'),pauseI=document.getElementById('pauseIcon');
+function fmt(s){if(!s||isNaN(s))return"0:00";const m=Math.floor(s/60),x=Math.floor(s%60);return m+":"+(x<10?"0":"")+x;}
+function togglePlay(){if(audio.paused){audio.play().then(()=>{playI.style.display='none';pauseI.style.display='block';}).catch(()=>{});}else{audio.pause();playI.style.display='block';pauseI.style.display='none';}}
+audio.addEventListener('timeupdate',()=>{if(audio.duration){fill.style.width=(audio.currentTime/audio.duration*100)+'%';cur.textContent=fmt(audio.currentTime);hlByTime(audio.currentTime);}});
+audio.addEventListener('loadedmetadata',()=>{dur.textContent=fmt(audio.duration);});
+function seekAudio(e){if(!audio.duration)return;const r=e.currentTarget.getBoundingClientRect();audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration;}
+const chList=document.getElementById('chList');
+chapters.forEach((ch,idx)=>{const d=document.createElement('div');d.className='pnl-ch';d.dataset.idx=idx;d.innerHTML='<span class="pnl-num">'+ch.n+'</span><span class="pnl-t">'+ch.l+'</span><span class="pnl-ts">'+fmt(ch.t)+'</span>';d.onclick=()=>{document.getElementById(ch.id).scrollIntoView({behavior:'smooth'});if(audio.duration){audio.currentTime=ch.t;}setActive(idx);if(window.innerWidth<=980)togglePanel();};chList.appendChild(d);});
+function setActive(idx){document.querySelectorAll('.pnl-ch').forEach(x=>x.classList.toggle('active',+x.dataset.idx===idx));}
+function hlByTime(t){let idx=0;for(let i=0;i<chapters.length;i++){if(t>=chapters[i].t)idx=i;}setActive(idx);}
+const so=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const i=chapters.findIndex(c=>c.id===e.target.id);if(i>=0&&audio.paused)setActive(i);}});},{rootMargin:"-45% 0px -50% 0px"});
+chapters.forEach(c=>{const el=document.getElementById(c.id);if(el)so.observe(el);});
+function togglePanel(){document.getElementById('panel').classList.toggle('open');}
+setActive(0);
+</script>
+</body>
+</html>
